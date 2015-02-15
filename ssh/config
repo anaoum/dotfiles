@@ -1,0 +1,21 @@
+Include config.d/*
+
+Host github.com bitbucket.org
+    CheckHostIP no
+
+Host *.usyd.edu.au
+    ForwardAgent yes
+
+Host github.com bitbucket.org *.usyd.edu.au
+    StrictHostKeyChecking yes
+    UserKnownHostsFile ~/.ssh/known_hosts
+
+Host *
+    LogLevel INFO
+    Compression yes
+    ServerAliveInterval 5
+    ServerAliveCountMax 3
+    CheckHostIP yes
+    ForwardAgent no
+    StrictHostKeyChecking ask
+    UserKnownHostsFile ~/.ssh/known_hosts_tmp

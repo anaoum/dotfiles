@@ -1,0 +1,7 @@
+ssh/id_ecdsa
+ssh/id_ed25519
+ssh/id_dsa
+ssh/id_rsa
+ssh/known_hosts_tmp
+ssh/ssh_auth_sock
+vim/.netrwhist
