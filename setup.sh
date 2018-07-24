@@ -38,6 +38,11 @@ mkdir -p ~/.state/vimbak
 mkdir -p ~/.state/vimswp
 mkdir -p ~/.state/vimund
 
+pushd "$DIRECTORY" > /dev/null
+git submodule update --init
+git submodule update
+popd > /dev/null
+
 chmod -R go-rwx "$DIRECTORY/ssh"
 
 echo "successfully installed"
