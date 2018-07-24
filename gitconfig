@@ -1,3 +1,5 @@
+[alias]
+    logk = log --graph --oneline --all
 [color]
     diff = auto
     status = auto
