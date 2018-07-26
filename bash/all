@@ -4,7 +4,7 @@ umask 077
 function sudo {
     (
         umask 022
-        command sudo $*
+        command sudo "$@"
     )
 }
 
