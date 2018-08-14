@@ -36,8 +36,15 @@ set smartcase
 " Highlight search terms
 set hlsearch
 
-" Use a dark background
-set background=dark
+if has("gui_running")
+    " Use a light background in GUI
+    set background=light
+    " Use a larger font size in GUI
+    set guifont=Monaco:h14
+else
+    " Use a dark background in terminal
+    set background=dark
+endif
 
 " How to display invisible characters when list is enabled
 set listchars=tab:»·,extends:›,precedes:‹,nbsp:·,trail:·,space:·,eol:$
