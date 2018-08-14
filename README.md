@@ -25,7 +25,7 @@ Depending on your system, you may need to manually install or upgrade to the fol
 Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the setup script to see exactly what it does.
 
 ```bash
-git clone git@github.com:anaoum/dotfiles.git ~/repos/dotfiles
+git clone https://github.com/anaoum/dotfiles.git ~/repos/dotfiles
 ~/repos/dotfiles/setup.sh
 ```
 
