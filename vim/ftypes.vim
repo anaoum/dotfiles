@@ -5,8 +5,8 @@ filetype plugin indent on
 let g:tex_flavor = "latex"
 
 " Set options based on filetypes, overrides the filetype plugin/indent options
-autocmd FileType bib setlocal sts=2 sw=2 ts=2 tw=80 fo-=tc
-autocmd FileType tex setlocal sts=2 sw=2 ts=2 tw=80 fo-=tc
+autocmd FileType bib setlocal sts=2 sw=2 ts=2
+autocmd FileType tex setlocal sts=2 sw=2 ts=2 wrap
 autocmd FileType xml setlocal sts=2 sw=2 ts=2
 autocmd FileType html setlocal sts=2 sw=2 ts=2
 autocmd FileType css setlocal sts=2 sw=2 ts=2
