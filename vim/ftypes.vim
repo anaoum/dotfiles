@@ -17,3 +17,8 @@ set cryptmethod=blowfish2
 
 " Character encodings to consider when starting to edit an existing file
 set fileencodings=ucs-bom,utf-8,utf-16le,default,latin1
+
+let b:spellfile = expand("%:p:h") . "/words.utf-8.add"
+if filereadable(b:spellfile)
+    let &l:spellfile = b:spellfile
+endif
