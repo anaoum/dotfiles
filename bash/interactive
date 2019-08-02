@@ -110,6 +110,41 @@ function list-repos {
     done | sed "s#$HOME/repos/##" | sort | column -t -s $'\t'
 }
 
+function _aes {
+    local op="$1"
+    local src="$2"
+    local dst="$3"
+    if [ -z "$src" -o -z "$dst" ]; then
+        >&2 echo "Usage: ${op}-file <source-file> <${op}ed-file>"
+        return;
+    fi
+    if [ ! -r "$src" ]; then
+        >&2 echo "$src does not exist."
+        return;
+    fi
+    if [ "$src" -ef "$dst" ]; then
+        >&2 echo "$src and $dst are the same file."
+        return;
+    fi
+    if [ -e "$dst" ]; then
+        read -p "$dst already exists. Do you want to overwrite? " yn
+        while true; do
+            case $yn in
+                [Yy]) break;;
+                [Nn]) return;;
+                *) read -p "Please answer Y for yes or N for no. " yn;;
+            esac
+        done
+    fi
+    openssl enc -aes-256-cbc -a -${op::1} -in "$src" -out "$dst"
+}
+function encrypt-file {
+    _aes "encrypt" "$1" "$2"
+}
+function decrypt-file {
+    _aes "decrypt" "$1" "$2"
+}
+
 # Aliases
 
 alias l='ls -lh'
