@@ -136,7 +136,7 @@ function _aes {
             esac
         done
     fi
-    openssl enc -aes-256-cbc -a -${op::1} -in "$src" -out "$dst"
+    openssl enc -aes-256-cbc -a -md sha256 -pbkdf2 -iter 1000000 -${op::1} -in "$src" -out "$dst"
 }
 function encrypt-file {
     _aes "encrypt" "$1" "$2"
