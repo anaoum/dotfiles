@@ -39,7 +39,7 @@ __path_prepend "$HOME/gocode/bin" PATH
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
-export LESS='-g -i -M -R -w'
+export LESS='-F -X -g -i -M -R -w'
 export LESSHISTFILE="$HOME/.state/less_history"
 
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
