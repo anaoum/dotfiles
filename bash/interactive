@@ -31,6 +31,9 @@ function __prompt_command {
         fi
         unset __start_time
     fi
+    if [ -x "$(command -v direnv)" ]; then
+        eval "$(direnv export bash)"
+    fi
     echo -e "\033]0;${HOSTNAME%%.*}: ${PWD/#$HOME/\~}\007"
 }
 PROMPT_COMMAND='__prompt_command'
