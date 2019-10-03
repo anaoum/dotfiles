@@ -1,4 +1,4 @@
-Include config.d/*
+Include config_*
 
 Host github.com bitbucket.org
     CheckHostIP no
