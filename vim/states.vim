@@ -20,6 +20,9 @@ set undofile
 " Store undo files in the ~/.state directory
 set undodir=~/.state/vimund
 
+" Disable creation of .netrwhist file
+let g:netrw_dirhistmax=0
+
 " Jump to the last position when reading a file
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
