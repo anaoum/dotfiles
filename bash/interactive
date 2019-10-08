@@ -38,7 +38,7 @@ function __prompt_command {
 }
 PROMPT_COMMAND='__prompt_command'
 
-PS1='$(tput bold)$(tput setaf 2)\u@\h$(tput sgr0):$(tput bold)$(tput setaf 4)\w$(tput sgr0)$(__git_ps1_colored " [%s]")$(__end_time)$(__exit_status)\n$(__ve_prompt)\$ ';
+PS1='$(tput setaf 2)\u@\h$(tput sgr0):$(tput setaf 4)\w$(tput sgr0)$(__git_ps1_colored " [%s]")$(__end_time)$(__exit_status)\n$(__ve_prompt)\$ ';
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWSTASHSTATE=true
@@ -48,11 +48,11 @@ function __git_ps1_colored {
     local git_status="$(__git_ps1 "$1")"
     if [ -n "$git_status" ]; then
         if [[ $git_status =~ [*]  ]]; then
-            git_status="$(tput bold)$(tput setaf 1)$git_status$(tput sgr0)"
+            git_status="$(tput setaf 1)$git_status$(tput sgr0)"
         elif [[ $git_status =~ [%\<\>$+] ]]; then
-            git_status="$(tput bold)$(tput setaf 3)$git_status$(tput sgr0)"
+            git_status="$(tput setaf 3)$git_status$(tput sgr0)"
         else
-            git_status="$(tput bold)$(tput setaf 2)$git_status$(tput sgr0)"
+            git_status="$(tput setaf 2)$git_status$(tput sgr0)"
         fi
     fi
     echo "$git_status"
@@ -60,13 +60,13 @@ function __git_ps1_colored {
 
 function __end_time {
     if [ -n "$__total_time" ]; then
-        echo " $(tput bold)$(tput setaf 6)(${__total_time}s)$(tput sgr0)"
+        echo " $(tput setaf 6)(${__total_time}s)$(tput sgr0)"
     fi
 }
 
 function __exit_status {
     if [ "$__exit_status_saved" -ne "0" ]; then
-        echo " $(tput bold)$(tput setaf 5){$__exit_status_saved}$(tput sgr0)"
+        echo " $(tput setaf 5){$__exit_status_saved}$(tput sgr0)"
     fi
 }
 
@@ -89,10 +89,10 @@ SHELL_SESSION_HISTORY=0 # Disables macOS session history
 
 if type dircolors &> /dev/null; then
     alias ls='ls --color=auto'
-    export LS_COLORS='di=34;01:ln=36;01:so=35;01:pi=33:ex=32;01:bd=33;01:cd=33;01:su=41:sg=43;30:tw=42;30:ow=42;34:'
+    export LS_COLORS='di=34:ln=36:so=35:pi=33:ex=32:bd=33:cd=33:su=41:sg=43;30:tw=42;30:ow=42;34'
 else
     alias ls='ls -G'
-    export LSCOLORS='ExGxFxdxCxDxDxxbadacec'
+    export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 fi
 
 # Functions
@@ -105,12 +105,12 @@ function list-repos {
                 cd "$file"
                 git_status=$(__git_ps1_colored "%s")
                 if [ -z "$git_status" ]; then
-                    git_status="$(tput bold)$(tput setaf 1)untracked$(tput sgr0)"
+                    git_status="$(tput setaf 1)untracked$(tput sgr0)"
                 fi
                 echo "$file/	$git_status"
             ) &
         else
-            echo "$file	$(tput bold)$(tput setaf 1)untracked$(tput sgr0)"
+            echo "$file	$(tput setaf 1)untracked$(tput sgr0)"
         fi
     done | sed "s#$HOME/repos/##" | sort | column -t -s $'\t'
 }
