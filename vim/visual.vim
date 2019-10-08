@@ -36,7 +36,7 @@ set smartcase
 " Highlight search terms
 set hlsearch
 
-if has("gui_running")
+if has("gui_running") || !empty($JUPYTERHUB_USER)
     " Use a light background in GUI
     set background=light
     " Use a larger font size in GUI
