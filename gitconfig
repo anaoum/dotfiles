@@ -1,5 +1,5 @@
 [alias]
-    logk = log --graph --oneline --all
+    logk = log --graph --all --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset | %Cblue%ae%Creset | %C(magenta)%ar%Creset | %s'
 [color]
     diff = auto
     status = auto
