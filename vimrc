@@ -29,3 +29,6 @@ set smartcase
 
 nmap <C-n> :next<CR>
 nmap <C-p> :prev<CR>
+
+vmap <C-c> y:echo system('cat > /dev/tcp/127.0.0.1/2547', getreg(''))<CR>
+vmap <C-x> x:echo system('cat > /dev/tcp/127.0.0.1/2547', getreg(''))<CR>

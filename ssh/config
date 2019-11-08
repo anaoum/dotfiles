@@ -11,7 +11,7 @@ Host github.com bitbucket.org *.usyd.edu.au
     UserKnownHostsFile ~/.ssh/known_hosts
 
 Host *
-    LogLevel INFO
+    LogLevel ERROR
     Compression yes
     ServerAliveInterval 5
     ServerAliveCountMax 3
@@ -19,3 +19,4 @@ Host *
     ForwardAgent no
     StrictHostKeyChecking ask
     UserKnownHostsFile ~/.ssh/known_hosts_tmp
+    RemoteForward 2547 127.0.0.1:2547
