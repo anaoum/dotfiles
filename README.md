@@ -47,7 +47,6 @@ unlink ~/.inputrc
 unlink ~/.pythonrc.py
 unlink ~/.ssh
 unlink ~/.tmux.conf
-unlink ~/.vim
 unlink ~/.vimrc
 rm -rf ~/repos/dotfiles
 ```
