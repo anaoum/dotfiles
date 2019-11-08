@@ -43,6 +43,7 @@ unlink ~/.bashrc
 unlink ~/.bin
 unlink ~/.gitconfig
 unlink ~/.gitignore
+unlink ~/.inputrc
 unlink ~/.pythonrc.py
 unlink ~/.ssh
 unlink ~/.tmux.conf

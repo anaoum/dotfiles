@@ -2,7 +2,7 @@
 
 DIRECTORY="$( cd "$(dirname "$0")" ; pwd -P )"
 
-DOTFILES=( bash bash_logout bash_profile bashrc bin gitconfig gitignore pythonrc.py ssh tmux.conf vim vimrc )
+DOTFILES=( bash bash_logout bash_profile bashrc bin gitconfig gitignore inputrc pythonrc.py ssh tmux.conf vim vimrc )
 
 for file in "${DOTFILES[@]}"; do
     if [ -e "$HOME/.$file" ]; then
