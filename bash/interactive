@@ -83,7 +83,7 @@ HISTIGNORE='&:[ ]*' # Ignores duplicate liness and lines that start with a space
 HISTFILESIZE=1000000
 HISTSIZE=100000
 HISTFILE="$HOME/.state/bash_history"
-SHELL_SESSION_HISTORY=0 # Disables macOS session history
+[ -e "$HOME/.bash_sessions_disable" ] || touch "$HOME/.bash_sessions_disable" # Disables macOS session history
 
 # ls colors
 
