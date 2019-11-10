@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function run_server {
+    if [ -x /usr/bin/pbcopy ]; then
+        if ! /usr/bin/pbpaste 2>/dev/null >/dev/tcp/127.0.0.1/2547; then
+            ( ( while true; do nc -l 127.0.0.1 2547 | /usr/bin/pbcopy; done) &)
+        fi
+    fi
+}
+
+if [ "$1" == "--server" ]; then
+    run_server
+else
+    if [ -x /usr/bin/pbcopy ]; then
+        /usr/bin/pbcopy
+    else
+        cat >/dev/tcp/127.0.0.1/2547
+    fi
+fi

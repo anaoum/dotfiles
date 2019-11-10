@@ -95,11 +95,9 @@ else
     export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 fi
 
-# Clipboard server
+# pbcopy server
 
-if [ -x "$(command -v pbcopy)" ] && ! pbpaste 2>/dev/null >/dev/tcp/127.0.0.1/2547; then
-    (( while true; do nc -l 127.0.0.1 2547 | pbcopy; done) &)
-fi
+"$HOME/.bin/pbcopy" --server
 
 # Functions
 
