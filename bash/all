@@ -2,10 +2,7 @@
 
 umask 077
 function sudo {
-    (
-        umask 022
-        command sudo "$@"
-    )
+    ( umask 022; command sudo "$@" )
 }
 
 function __path_prepend {
@@ -42,13 +39,3 @@ __path_prepend "$HOME/bin" PATH
 
 __path_prepend "$HOME/gocode" GOPATH
 __path_prepend "$HOME/gocode/bin" PATH
-
-export EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
-export LESS='-F -X -g -i -M -R -w'
-export LESSHISTFILE="$HOME/.state/less_history"
-
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
-
-ssh-add -q > /dev/null 2>&1

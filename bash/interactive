@@ -1,6 +1,14 @@
 #! bash
 
-# Bash 4.1+ completion
+"$HOME/.bin/pbcopy" --server
+
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+export LESS='-F -X -g -i -M -R -w'
+export LESSHISTFILE="$HOME/.state/less_history"
+export PYTHONSTARTUP="$HOME/.pythonrc.py"
+export BASH_ENV="$HOME/.bashrc"
 
 if [ -r /usr/local/share/bash-completion/bash_completion ]; then
     export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
@@ -10,12 +18,10 @@ elif [ -r /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
 fi
 
-# Informative prompt
-
 function __preexec_invoke_exec {
     [ -n "$COMP_LINE" ] && return
     [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return
-    history -a # Saves history after every command
+    history -a
     __start_time=$SECONDS
 }
 trap '__preexec_invoke_exec' DEBUG
@@ -77,15 +83,15 @@ function __ve_prompt {
     fi
 }
 
-# History
-
 HISTIGNORE='&:[ ]*' # Ignores duplicate liness and lines that start with a space
 HISTFILESIZE=1000000
 HISTSIZE=100000
 HISTFILE="$HOME/.state/bash_history"
-[ -e "$HOME/.bash_sessions_disable" ] || touch "$HOME/.bash_sessions_disable" # Disables macOS session history
 
-# ls colors
+# Disable macOS session history
+if [ ! -e "$HOME/.bash_sessions_disable" ]; then
+    touch "$HOME/.bash_sessions_disable"
+fi
 
 if type dircolors &> /dev/null; then
     alias ls='ls --color=auto'
@@ -94,12 +100,6 @@ else
     alias ls='ls -G'
     export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 fi
-
-# pbcopy server
-
-"$HOME/.bin/pbcopy" --server
-
-# Functions
 
 function list-repos {
     mkdir -p "$HOME/repos"
@@ -153,8 +153,6 @@ function encrypt-file {
 function decrypt-file {
     _aes "decrypt" "$1" "$2"
 }
-
-# Aliases
 
 alias l='ls -lh'
 alias la='ls -lah'

@@ -1,7 +1,5 @@
 #! bash
 
-export BASH_ENV="$HOME/.bashrc"
-
 source "$HOME/.bash/all"
 
 if [ -z "$PS1" ]; then
@@ -13,5 +11,3 @@ fi
 if shopt -q login_shell; then
     source "$HOME/.bash/login"
 fi
-
-:
