@@ -36,13 +36,11 @@ After installing, open a new terminal window to see the effects.
 To remove the dotfile configs, run the following commands:
 
 ```bash
-unlink ~/.bash
-unlink ~/.bash_logout
-unlink ~/.bash_profile
 unlink ~/.bashrc
 unlink ~/.bin
 unlink ~/.gitconfig
 unlink ~/.gitignore
+unlink ~/.profile
 unlink ~/.pythonrc.py
 unlink ~/.ssh
 unlink ~/.tmux.conf
