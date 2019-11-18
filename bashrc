@@ -1,5 +1,7 @@
 #! bash
 
+[ -z "$PS1" ] && return
+
 "$HOME/.bin/pbcopy" --server
 
 if [ -r /usr/local/share/bash-completion/bash_completion ]; then
