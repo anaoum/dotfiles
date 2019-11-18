@@ -1,0 +1,39 @@
+#!/bin/bash
+
+op="$(basename "$0")"
+if ! [ "$op" == "encrypt-file" -o "$op" == "decrypt-file" ]; then
+    >&2 echo "Script must be named encrypt-file or decrypt-file."
+    exit 5
+fi
+op=${op/-file/}
+
+src="$1"
+dst="$2"
+
+if [ -z "$src" -o -z "$dst" ]; then
+    >&2 echo "Usage: $0 <source-file> <${op}ed-file>"
+    exit 2
+fi
+
+if [ ! -r "$src" ]; then
+    >&2 echo "$src does not exist."
+    exit 3
+fi
+
+if [ "$src" -ef "$dst" ]; then
+    >&2 echo "$src and $dst are the same file."
+    exit 4
+fi
+
+if [ -e "$dst" ]; then
+    read -p "$dst already exists. Do you want to overwrite? " yn
+    while true; do
+        case $yn in
+            [Yy]) break;;
+            [Nn]) exit 1;;
+            *) read -p "Please answer Y for yes or N for no. " yn;;
+        esac
+    done
+fi
+
+openssl enc -aes-256-cbc -a -md sha256 -pbkdf2 -iter 1000000 -${op::1} -in "$src" -out "$dst"
