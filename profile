@@ -49,6 +49,8 @@ export LESS="-F -X -g -i -M -R -w"
 export LESSHISTFILE="$HOME/.state/less_history"
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 
+"$HOME/.bin/pbcopy" --server
+
 if [ -n "$BASH_VERSION" ]; then
     . "$HOME/.bashrc"
 fi
