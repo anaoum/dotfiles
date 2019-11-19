@@ -1,17 +1,22 @@
-#!/bin/bash
+#!/bin/sh
 
-op="$(basename "$0")"
-if ! [ "$op" == "encrypt-file" -o "$op" == "decrypt-file" ]; then
+command=`basename "$0"`
+if [ "$command" = "encrypt-file" ]; then
+    command=encrypt
+    op=e
+elif [ "$command" = "decrypt-file" ]; then
+    command=decrypt
+    op=d
+else
     >&2 echo "Script must be named encrypt-file or decrypt-file."
     exit 5
 fi
-op=${op/-file/}
 
 src="$1"
 dst="$2"
 
 if [ -z "$src" -o -z "$dst" ]; then
-    >&2 echo "Usage: $0 <source-file> <${op}ed-file>"
+    >&2 echo "Usage: $0 <source-file> <${command}ed-file>"
     exit 2
 fi
 
@@ -36,4 +41,4 @@ if [ -e "$dst" ]; then
     done
 fi
 
-openssl enc -aes-256-cbc -a -md sha256 -pbkdf2 -iter 1000000 -${op::1} -in "$src" -out "$dst"
+openssl enc -aes-256-cbc -a -md sha256 -pbkdf2 -iter 1000000 -$op -in "$src" -out "$dst"
