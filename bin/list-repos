@@ -1,0 +1,18 @@
+#!/bin/bash
+
+mkdir -p "$HOME/repos"
+
+find "$HOME/repos" -mindepth 1 -maxdepth 1 -not -name '.*' | while read file; do
+    if [ -d "$file" ]; then
+        (
+            cd "$file"
+            git_status=$(__git_ps1_colored "%s")
+            if [ -z "$git_status" ]; then
+                git_status="$(tput setaf 1)untracked$(tput sgr0)"
+            fi
+            echo "$file/	$git_status"
+        ) &
+    else
+        echo "$file	$(tput setaf 1)untracked$(tput sgr0)"
+    fi
+done | sed "s#$HOME/repos/##" | sort | column -t -s $'\t'

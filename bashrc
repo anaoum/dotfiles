@@ -38,24 +38,6 @@ PROMPT_COMMAND='__prompt_command'
 
 PS1='$(tput setaf 2)\u@\h$(tput sgr0):$(tput setaf 4)\w$(tput sgr0)$(__git_ps1_colored " [%s]")$(__end_time)$(__exit_status)\n$(__ve_prompt)\$ ';
 
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM=auto
-function __git_ps1_colored {
-    local git_status="$(__git_ps1 "$1")"
-    if [ -n "$git_status" ]; then
-        if [[ $git_status =~ [*]  ]]; then
-            git_status="$(tput setaf 1)$git_status$(tput sgr0)"
-        elif [[ $git_status =~ [%\<\>$+] ]]; then
-            git_status="$(tput setaf 3)$git_status$(tput sgr0)"
-        else
-            git_status="$(tput setaf 2)$git_status$(tput sgr0)"
-        fi
-    fi
-    echo "$git_status"
-}
-
 function __end_time {
     if [ -n "$__total_time" ]; then
         echo " $(tput setaf 6)(${__total_time}s)$(tput sgr0)"
@@ -92,24 +74,6 @@ else
     alias ls='ls -G'
     export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 fi
-
-function list-repos {
-    mkdir -p "$HOME/repos"
-    find "$HOME/repos" -mindepth 1 -maxdepth 1 -not -name '.*' | while read file; do
-        if [ -d "$file" ]; then
-            (
-                cd "$file"
-                git_status=$(__git_ps1_colored "%s")
-                if [ -z "$git_status" ]; then
-                    git_status="$(tput setaf 1)untracked$(tput sgr0)"
-                fi
-                echo "$file/	$git_status"
-            ) &
-        else
-            echo "$file	$(tput setaf 1)untracked$(tput sgr0)"
-        fi
-    done | sed "s#$HOME/repos/##" | sort | column -t -s $'\t'
-}
 
 alias l='ls -lh'
 alias la='ls -lah'
