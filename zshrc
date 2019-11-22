@@ -20,7 +20,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUPSTREAM=auto
 
-source ~/git-prompt.sh
+source ~/repos/dotfiles/git-prompt.sh
 
 function precmd {
     (( psvar[1] = SECONDS - __start_time ))
