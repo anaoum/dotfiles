@@ -6,7 +6,7 @@ bindkey -e
 bindkey "^[[3~" delete-char
 
 autoload -Uz compinit
-compinit
+compinit -d ~/.state/zcompdump
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 function preexec {
