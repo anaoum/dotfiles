@@ -8,7 +8,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUPSTREAM=auto
 
-source ~/repos/dotfiles/git-prompt.sh
+source ~/.bin/git-prompt.sh
 
 find "$HOME/repos" -mindepth 1 -maxdepth 1 -not -name '.*' | while read file; do
     (
