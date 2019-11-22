@@ -68,7 +68,7 @@ HISTSIZE=100000
 HISTFILE="$HOME/.state/bash_history"
 
 # Disable macOS session history
-if [ ! -e "$HOME/.bash_sessions_disable" ]; then
+if [ "$TERM_PROGRAM" = "Apple_Terminal" -a ! -e "$HOME/.bash_sessions_disable" ]; then
     touch "$HOME/.bash_sessions_disable"
 fi
 
