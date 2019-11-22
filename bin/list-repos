@@ -1,18 +1,24 @@
-#!/bin/bash
+#!/bin/zsh
 
 mkdir -p "$HOME/repos"
 
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWUPSTREAM=auto
+
+source ~/git-prompt.sh
+
 find "$HOME/repos" -mindepth 1 -maxdepth 1 -not -name '.*' | while read file; do
-    if [ -d "$file" ]; then
-        (
+    (
+        if [ -d "$file" ]; then
             cd "$file"
-            git_status=$(__git_ps1_colored "%s")
-            if [ -z "$git_status" ]; then
-                git_status="$(tput setaf 1)untracked$(tput sgr0)"
-            fi
-            echo "$file/	$git_status"
-        ) &
-    else
-        echo "$file	$(tput setaf 1)untracked$(tput sgr0)"
-    fi
+            __git_ps1 '' '' '%s'
+        fi
+        if [ -z "$PS1" ]; then
+            PS1='%F{red}untracked%f'
+        fi
+        echo "$file	${(%)PS1}"
+    ) &
 done | sed "s#$HOME/repos/##" | sort | column -t -s $'\t'
