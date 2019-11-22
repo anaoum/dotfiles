@@ -10,6 +10,12 @@ elif [ -r /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
 fi
 
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_SHOWUPSTREAM=auto
+
 function __preexec_invoke_exec {
     [ -n "$COMP_LINE" ] && return
     [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return
@@ -33,10 +39,9 @@ function __prompt_command {
         eval "$(direnv export bash)"
     fi
     echo -e "\033]0;${HOSTNAME%%.*}: ${PWD/#$HOME/\~}\007"
+    __git_ps1 '$(tput setaf 2)\u@\h$(tput sgr0):$(tput setaf 4)\w$(tput sgr0)' '$(__end_time)$(__exit_status)\n$(__ve_prompt)\$ ' ' [%s]'
 }
 PROMPT_COMMAND='__prompt_command'
-
-PS1='$(tput setaf 2)\u@\h$(tput sgr0):$(tput setaf 4)\w$(tput sgr0)$(__git_ps1_colored " [%s]")$(__end_time)$(__exit_status)\n$(__ve_prompt)\$ ';
 
 function __end_time {
     if [ -n "$__total_time" ]; then
