@@ -9,10 +9,6 @@ autoload -Uz compinit
 compinit -d ~/.state/zcompdump
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-function preexec {
-    __start_time=$SECONDS
-}
-
 VIRTUAL_ENV_DISABLE_PROMPT=1
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
@@ -21,6 +17,10 @@ GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUPSTREAM=auto
 
 source ~/.bin/git-prompt.sh
+
+function preexec {
+    __start_time=$SECONDS
+}
 
 function precmd {
     (( psvar[1] = SECONDS - __start_time ))

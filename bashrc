@@ -17,15 +17,15 @@ elif [ -r /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
 fi
 
-function __preexec_invoke_exec {
+function preexec {
     [ -n "$COMP_LINE" ] && return
     [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return
     history -a
     __start_time=$SECONDS
 }
-trap '__preexec_invoke_exec' DEBUG
+trap 'preexec' DEBUG
 
-function __prompt_command {
+function precmd {
     __exit_status="$?"
     if [ "$__exit_status" -ne "0" ]; then
         __exit_status=" {$(tput setaf 5)$__exit_status$(tput sgr0)}"
@@ -51,7 +51,7 @@ function __prompt_command {
     echo -e "\033]0;${HOSTNAME%%.*}: ${PWD/#$HOME/\~}\007"
     __git_ps1 '$(tput setaf 2)\u@\h$(tput sgr0):$(tput setaf 4)\w$(tput sgr0)' '$__total_time$__exit_status\n$__ve_prompt\$ ' ' [%s]'
 }
-PROMPT_COMMAND='__prompt_command'
+PROMPT_COMMAND=precmd
 
 HISTIGNORE='&:[ ]*' # Ignores duplicate liness and lines that start with a space
 HISTFILESIZE=1000000
