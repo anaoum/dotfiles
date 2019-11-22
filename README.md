@@ -5,6 +5,7 @@ These are a simple set of dotfiles that strive to strike the right balance betwe
 ## Configured programs
 
 * bash
+* zsh
 * git
 * python
 * ssh
@@ -19,6 +20,7 @@ Depending on your system, you may need to manually install or upgrade to the fol
 * openssh 7.3p1+
 * bash 4.1+
 * bash-completion (for bash 4.1+)
+* zsh 5.7+
 
 ## Install
 
@@ -45,5 +47,6 @@ unlink ~/.pythonrc.py
 unlink ~/.ssh
 unlink ~/.tmux.conf
 unlink ~/.vimrc
+unlink ~/.zshrc
 rm -rf ~/repos/dotfiles
 ```
