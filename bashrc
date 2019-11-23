@@ -58,11 +58,6 @@ HISTFILESIZE=1000000
 HISTSIZE=100000
 HISTFILE="$HOME/.state/bash_history"
 
-# Disable macOS session history
-if [ "$TERM_PROGRAM" = "Apple_Terminal" -a ! -e "$HOME/.bash_sessions_disable" ]; then
-    touch "$HOME/.bash_sessions_disable"
-fi
-
 if [ -x "$(command -v dircolors)" ]; then
     alias ls='ls --color=auto'
 else
