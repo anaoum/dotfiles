@@ -2,13 +2,6 @@
 
 [ -z "$PS1" ] && return
 
-VIRTUAL_ENV_DISABLE_PROMPT=1
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWCOLORHINTS=true
-GIT_PS1_SHOWUPSTREAM=auto
-
 if [ -r /usr/local/share/bash-completion/bash_completion ]; then
     BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
     source /usr/local/share/bash-completion/bash_completion
@@ -16,6 +9,15 @@ elif [ -r /usr/share/bash-completion/bash_completion ]; then
     BASH_COMPLETION_COMPAT_DIR="/etc/bash_completion.d"
     source /usr/share/bash-completion/bash_completion
 fi
+
+VIRTUAL_ENV_DISABLE_PROMPT=1
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_SHOWUPSTREAM=auto
+
+source ~/.bin/git-prompt.sh
 
 function preexec {
     [ -n "$COMP_LINE" ] && return
@@ -55,7 +57,7 @@ PROMPT_COMMAND=precmd
 
 HISTIGNORE='&:[ ]*' # Ignores duplicate liness and lines that start with a space
 HISTFILESIZE=1000000
-HISTSIZE=100000
+HISTSIZE=1000000
 HISTFILE="$HOME/.state/bash_history"
 
 if [ -x "$(command -v dircolors)" ]; then
