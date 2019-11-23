@@ -23,17 +23,15 @@ function preexec {
 }
 
 function precmd {
-    (( psvar[1] = SECONDS - __start_time ))
-    if [ -n "$__start_time" -a $psvar[1] -ge 1 ]; then
-        [ $psvar[1] -ge 10 ] && echo -ne '\a'
-    else
-        psvar[1]=()
+    unset psvar
+    (( __total_time = SECONDS - __start_time ))
+    if [ -n "$__start_time" -a $__total_time -ge 1 ]; then
+        [ $__total_time -ge 10 ] && echo -ne '\a'
+        psvar[1]=$__total_time
     fi
-    unset __start_time
+    unset __start_time __total_time
     if [ -n "$VIRTUAL_ENV" ]; then
         psvar[2]="($(basename "$VIRTUAL_ENV"))"
-    else
-        psvar[2]=()
     fi
     if [ -x "$(command -v direnv)" ]; then
         eval "$(direnv export zsh)"
