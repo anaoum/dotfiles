@@ -10,10 +10,10 @@ GIT_PS1_SHOWCOLORHINTS=true
 GIT_PS1_SHOWUPSTREAM=auto
 
 if [ -r /usr/local/share/bash-completion/bash_completion ]; then
-    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
     source /usr/local/share/bash-completion/bash_completion
 elif [ -r /usr/share/bash-completion/bash_completion ]; then
-    export BASH_COMPLETION_COMPAT_DIR="/etc/bash_completion.d"
+    BASH_COMPLETION_COMPAT_DIR="/etc/bash_completion.d"
     source /usr/share/bash-completion/bash_completion
 fi
 
