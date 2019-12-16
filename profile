@@ -51,6 +51,11 @@ export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 export LS_COLORS='di=34:ln=36:so=35:pi=33:ex=32:bd=33:cd=33:su=41:sg=43;30:tw=42;30:ow=42;34'
 
+if [ -S "$SSH_AUTH_SOCK" ] && [ ! -L "$SSH_AUTH_SOCK" ]; then
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.state/ssh_auth_sock"
+    export SSH_AUTH_SOCK="$HOME/.state/ssh_auth_sock"
+fi
+
 "$HOME/.bin/pbcopy" --server
 
 if [ -n "$BASH_VERSION" ]; then
