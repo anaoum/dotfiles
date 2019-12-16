@@ -47,7 +47,6 @@ export VISUAL="vim"
 export PAGER="less"
 export LESS="-F -X -g -i -M -R -w"
 export LESSHISTFILE="$HOME/.state/less_history"
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 export LS_COLORS='di=34:ln=36:so=35:pi=33:ex=32:bd=33:cd=33:su=41:sg=43;30:tw=42;30:ow=42;34'
 

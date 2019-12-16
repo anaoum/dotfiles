@@ -7,7 +7,6 @@ These are a simple set of dotfiles that strive to strike the right balance betwe
 * bash
 * zsh
 * git
-* python
 * ssh
 * tmux
 * vim
@@ -43,7 +42,6 @@ unlink ~/.bin
 unlink ~/.gitconfig
 unlink ~/.gitignore
 unlink ~/.profile
-unlink ~/.pythonrc.py
 unlink ~/.ssh
 unlink ~/.tmux.conf
 unlink ~/.vimrc
