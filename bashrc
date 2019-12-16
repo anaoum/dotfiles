@@ -11,10 +11,10 @@ elif [ -r /usr/share/bash-completion/bash_completion ]; then
 fi
 
 VIRTUAL_ENV_DISABLE_PROMPT=1
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUPSTREAM=auto
 
 source ~/.bin/git-prompt.sh
@@ -55,22 +55,9 @@ function precmd {
 }
 PROMPT_COMMAND=precmd
 
-HISTIGNORE='&:[ ]*' # Ignores duplicate liness and lines that start with a space
+HISTIGNORE='&:[ ]*'
 HISTFILESIZE=1000000
 HISTSIZE=1000000
 HISTFILE="$HOME/.state/bash_history"
 
-if [ -x "$(command -v dircolors)" ]; then
-    alias ls='ls --color=auto'
-else
-    alias ls='ls -G'
-fi
-
-alias l='ls -lh'
-alias la='ls -lah'
-alias lsq='ls --quoting=escape'
-alias grep='grep --color=auto'
-alias less='/usr/share/vim/vim*/macros/less.sh'
-alias lr='list-repos'
-alias whatismyip='wget http://ipinfo.io/ip -qO -'
-alias duh='du -d1 . | sort -rn | numfmt --from-unit=1024 --to=iec-i --suffix=B'
+source ~/.aliases

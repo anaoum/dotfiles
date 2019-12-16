@@ -37,6 +37,7 @@ After installing, open a new terminal window to see the effects.
 To remove the dotfile configs, run the following commands:
 
 ```bash
+unlink ~/.aliases
 unlink ~/.bashrc
 unlink ~/.bin
 unlink ~/.gitconfig
