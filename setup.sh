@@ -2,7 +2,7 @@
 
 DIRECTORY="$( cd "$(dirname "$0")" ; pwd -P )"
 
-DOTFILES=( aliases bashrc bin gitconfig gitignore profile ssh tmux.conf vimrc zshrc )
+DOTFILES=( aliases bashrc bin gitconfig gitignore gitprompt profile ssh tmux.conf vimrc zshrc )
 
 for file in "${DOTFILES[@]}"; do
     if [ -e "$HOME/.$file" ]; then

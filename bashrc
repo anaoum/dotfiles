@@ -17,7 +17,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUPSTREAM=auto
 
-source ~/.bin/git-prompt.sh
+source ~/.gitprompt
 
 function preexec {
     [ -n "$COMP_LINE" ] && return

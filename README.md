@@ -42,6 +42,7 @@ unlink ~/.bashrc
 unlink ~/.bin
 unlink ~/.gitconfig
 unlink ~/.gitignore
+unlink ~/.gitprompt
 unlink ~/.profile
 unlink ~/.ssh
 unlink ~/.tmux.conf
