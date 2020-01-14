@@ -32,6 +32,8 @@ function precmd {
     unset __start_time __total_time
     if [ -n "$VIRTUAL_ENV" ]; then
         psvar[2]="($(basename "$VIRTUAL_ENV"))"
+    elif [ -n "$CONDA_PREFIX" ]; then
+        psvar[2]="($(basename "$CONDA_PREFIX"))"
     fi
     if [ -x "$(command -v direnv)" ]; then
         eval "$(direnv export zsh)"

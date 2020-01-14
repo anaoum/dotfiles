@@ -44,6 +44,8 @@ function precmd {
     unset __start_time
     if [ -n "$VIRTUAL_ENV" ]; then
         __ve_prompt="($(basename "$VIRTUAL_ENV"))"
+    elif [ -n "$CONDA_PREFIX" ]; then
+        __ve_prompt="($(basename "$CONDA_PREFIX"))"
     else
         __ve_prompt=""
     fi

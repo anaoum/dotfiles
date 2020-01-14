@@ -61,3 +61,7 @@ fi
 if [ -n "$BASH_VERSION" ]; then
     . "$HOME/.bashrc"
 fi
+
+if [ -r "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/anaconda3/etc/profile.d/conda.sh"
+fi
