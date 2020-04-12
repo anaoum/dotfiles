@@ -8,6 +8,7 @@ bindkey "^[[3~" delete-char
 autoload -Uz compinit
 compinit -d ~/.state/zcompdump
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+[ -e /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 VIRTUAL_ENV_DISABLE_PROMPT=1
 GIT_PS1_SHOWDIRTYSTATE=1
