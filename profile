@@ -1,10 +1,5 @@
 #! sh
 
-umask 077
-sudo () {
-    ( umask 022; command sudo "$@" )
-}
-
 __export_unique () {
     old=`eval echo '$'$1`
     new=`printf %s "$old" | awk -v RS=: '!a[$0]++' | paste -s -d: -`
