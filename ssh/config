@@ -2,11 +2,6 @@ Include config_*
 
 Host github.com bitbucket.org
     CheckHostIP no
-
-Host *.usyd.edu.au
-    ForwardAgent yes
-
-Host github.com bitbucket.org *.usyd.edu.au
     StrictHostKeyChecking yes
     UserKnownHostsFile ~/.ssh/known_hosts
 
