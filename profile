@@ -50,6 +50,9 @@ export LSCOLORS='exgxfxdxcxdxdxxbadacbc'
 export LS_COLORS='di=34:ln=36:so=35:pi=33:ex=32:bd=33:cd=33:su=41:sg=43;30:tw=42;30:ow=42;34'
 export TERM='xterm-256color'
 
+if [ -S "$HOME/.1password/agent.sock" ]; then
+    export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
 if [ -S "$SSH_AUTH_SOCK" ] && [ ! -L "$SSH_AUTH_SOCK" ]; then
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.state/ssh_auth_sock"
     export SSH_AUTH_SOCK="$HOME/.state/ssh_auth_sock"
