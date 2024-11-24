@@ -31,6 +31,7 @@ PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/opt/homebrew/opt/openssl/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/bin:$PATH"
 
