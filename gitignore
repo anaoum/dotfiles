@@ -2,3 +2,6 @@
 Thumbs.db
 *.pyc
 *.o
+.envrc
+.coverage.*
+workspace.ipynb
