@@ -38,6 +38,7 @@ To remove the dotfile configs, run the following commands:
 
 ```bash
 unlink ~/.aliases
+unlink ~/.aws
 unlink ~/.bashrc
 unlink ~/.bin
 unlink ~/.gitconfig
