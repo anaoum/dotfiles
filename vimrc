@@ -34,6 +34,3 @@ set smartcase
 
 nmap <C-n> :next<CR>
 nmap <C-p> :prev<CR>
-
-vmap <C-c> y:echo system('pbcopy', getreg(''))<CR>
-vmap <C-x> x:echo system('pbcopy', getreg(''))<CR>

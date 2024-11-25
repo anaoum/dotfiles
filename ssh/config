@@ -14,7 +14,6 @@ Host *
     ForwardAgent no
     StrictHostKeyChecking ask
     UserKnownHostsFile ~/.ssh/known_hosts_tmp
-    RemoteForward 2547 127.0.0.1:2547
     ControlMaster auto
     ControlPath ~/.state/ssh-cm-%C
     ControlPersist yes

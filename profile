@@ -56,8 +56,6 @@ if [ -S "$SSH_AUTH_SOCK" ] && [ ! -L "$SSH_AUTH_SOCK" ]; then
     export SSH_AUTH_SOCK="$HOME/.state/ssh_auth_sock"
 fi
 
-"$HOME/.bin/pbcopy" --server
-
 if [ -n "$BASH_VERSION" ]; then
     . "$HOME/.bashrc"
 fi
