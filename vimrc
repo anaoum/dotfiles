@@ -8,12 +8,10 @@ set undodir=~/.state/vimund//
 set viminfofile=~/.state/viminfo
 let g:netrw_home="~/.state"
 
-if ! has('gui_running') && empty($JUPYTERHUB_USER)
-  set background=dark
+if ! has('gui_running')
+  set mouse=
 endif
 
-set mouse=a
-set ttymouse=sgr
 set title
 set number
 highlight LineNr ctermfg=Grey
